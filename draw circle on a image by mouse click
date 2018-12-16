@@ -1,0 +1,23 @@
+
+#funtion to catch the mouse click position and draw a circle around it
+def draw_circle(event,x,y,flags,params):
+    
+    xi=-1,
+    yi=-1
+    
+    if event==cv2.EVENT_LBUTTONDOWN:
+        xi,yi=x,y
+        cv2.circle(img2,center=(xi,yi),radius=30,color=(255,0,0),thickness=4)
+        
+        
+img2=np.zeros(shape=(512,512,3))
+
+cv2.namedWindow(winname="mycircle")
+cv2.setMouseCallback("mycircle",draw_circle)
+
+while True:
+    cv2.imshow("mycircle",img2)
+    if cv2.waitKey(2) & 0xFF==27:
+        break
+cv2.destroyAllWindows()    
+ 
